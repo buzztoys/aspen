@@ -1,3 +1,15 @@
 {
-	"Block":"Cube",
+	"elements": [
+		{
+			"type":"Block",
+			"display":"Cube"
+		}
+	],
+	"connections": [
+		{
+			"type":"Dependency",
+			"display":"cylinder"
+		}
+	]
+
 }
