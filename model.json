@@ -1,1 +1,7 @@
-{"elements":[{"name":"Block1","type":"Block"},{"name":"Block2","type":"Block"}]}
+{
+	"elements":[
+		{"name":"Block1", "type":"Block", "id":"0"},
+		{"name":"Block2", "type":"Block", "id":"1"},
+		{"name":"", "type":"Class", "id":"3"}
+	]
+}
