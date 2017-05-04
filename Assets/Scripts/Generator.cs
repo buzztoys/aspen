@@ -6,10 +6,10 @@ using System.Text;
 using System.IO;
 using System;
 
-
 public class Generator : MonoBehaviour {
 
 	public string filename;
+	public GameObject blockPrefab;
 
 	// Use this for initialization
 	void Start () {
@@ -19,6 +19,7 @@ public class Generator : MonoBehaviour {
 		// this is a list of Elements, however many were in the list of "elements":[]
 		ElementInfo[] elements = JsonHelper.FromJson<ElementInfo>(jsonString);
 
+		// this builds an element for each of the ElementInfo in the list
 		Populate (elements);
 	}
 	
@@ -28,9 +29,14 @@ public class Generator : MonoBehaviour {
 
 	private void Populate(ElementInfo[] elements)
 	{
+		Transform location = gameObject.transform;
+
+		int counter = 1;
 		foreach (ElementInfo elem in elements) {
-			Debug.Log (elem.name);
-			Debug.Log (elem.type);
+			Vector3 offset = new Vector3 (2 * counter, 0, 0);
+			GameObject created = Instantiate (blockPrefab, location.position + offset, location.rotation) as GameObject;
+			created.GetComponent<ElementBehaviour> ().Learn (elem);
+			counter += 1;
 		}
 	}
 
@@ -40,11 +46,6 @@ public class Generator : MonoBehaviour {
 		{
 			string line;
 			StreamReader theReader = new StreamReader(filename, Encoding.Default);
-			// Immediately clean up the reader after this block of code is done.
-			// You generally use the "using" statement for potentially memory-intensive objects
-			// instead of relying on garbage collection.
-			// (Do not confuse this with the using directive for namespace at the 
-			// beginning of a class!)
 			StringBuilder jsonBuilder = new StringBuilder("");
 			using (theReader)
 			{
