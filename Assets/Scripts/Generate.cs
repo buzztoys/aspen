@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class Generate : MonoBehaviour {
     public Transform spawn1;
-    public Transform spawn2;
     public GameObject cube;
-    public GameObject sphere;
     public static string stringtoEdit = "000";
+
     private void OnGUI ()
     {
         stringtoEdit = GUI.TextField(new Rect(10, 10, 200, 20), stringtoEdit, 25);
@@ -130,12 +129,11 @@ public class Generate : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.X))
         {
             Instantiate(cube, spawn1.position, spawn1.rotation);
-            Instantiate(cube, spawn2.position, spawn2.rotation);
         }
             
-            if (Input.GetKeyDown(KeyCode.C))
-        {
-            Instantiate(sphere, spawn1.position, spawn1.rotation);
-        }
+//            if (Input.GetKeyDown(KeyCode.C))
+//        {
+//            Instantiate(sphere, spawn1.position, spawn1.rotation);
+//        }
     }
 }
