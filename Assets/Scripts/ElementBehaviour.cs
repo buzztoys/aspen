@@ -11,9 +11,6 @@ public class ElementBehaviour : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Vector3 textLocation = transform.position + new Vector3(0,2,0);
-		floating = Instantiate (text, textLocation, Quaternion.identity);
-		floating.GetComponent<Renderer>().enabled = showText;
 	}
 	
 	// Update is called once per frame
@@ -26,6 +23,11 @@ public class ElementBehaviour : MonoBehaviour {
 
 	public void Learn(ElementInfo information) {
 		info = information;
+
+		Vector3 textLocation = transform.position + new Vector3(0,2,0);
+		floating = Instantiate (text, textLocation, Quaternion.identity);
+		floating.GetComponent<Renderer> ().enabled = showText;
+		floating.GetComponent<TextMesh> ().text = info.name;
 	}
 
 }

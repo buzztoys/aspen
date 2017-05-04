@@ -31,9 +31,9 @@ public class Generator : MonoBehaviour {
 	{
 		Transform location = gameObject.transform;
 
-		int counter = 1;
+		int counter = 0;
 		foreach (ElementInfo elem in elements) {
-			Vector3 offset = new Vector3 (2 * counter, 0, 0);
+			Vector3 offset = new Vector3 (3 * counter, 0, 0);
 			GameObject created = Instantiate (blockPrefab, location.position + offset, location.rotation) as GameObject;
 			created.GetComponent<ElementBehaviour> ().Learn (elem);
 			counter += 1;
